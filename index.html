@@ -41,12 +41,13 @@
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-            gap: 20px;
+            gap: 10px; /* Diminuído o gap entre as fotos */
             margin-top: 20px;
         }
 
         .gallery img {
-            width: 250px; /* Definindo o tamanho fixo das imagens */
+            width: 100%; /* Faz com que as imagens ocupem 100% da largura disponível */
+            max-width: 250px; /* Limita a largura máxima */
             height: auto;
             border-radius: 15px;
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
@@ -101,6 +102,58 @@
             font-size: 2em;
             color: #ff6b81;
             margin-bottom: 20px;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em; /* Tamanho da fonte reduzido em telas pequenas */
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
+                gap: 8px; /* Reduzindo o gap em telas pequenas */
+            }
+
+            .gallery img {
+                max-width: 200px; /* Tamanho das imagens reduzido em telas pequenas */
+            }
+
+            .love-message {
+                font-size: 1.2em; /* Reduzir o tamanho da mensagem em telas pequenas */
+            }
+
+            .letter-container {
+                width: 90%; /* Largura maior da cartinha */
+                padding: 15px; /* Menos padding para caber melhor em telas pequenas */
+            }
+
+            .letter {
+                font-size: 1.1em; /* Tamanho de fonte reduzido */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em; /* Ajuste ainda maior do tamanho da fonte */
+            }
+
+            .gallery {
+                grid-template-columns: 1fr; /* Apenas 1 coluna em telas muito pequenas */
+                gap: 6px; /* Reduzindo ainda mais o gap em telas muito pequenas */
+            }
+
+            .gallery img {
+                max-width: 150px; /* Tamanho das imagens ainda mais reduzido */
+            }
+
+            .love-message {
+                font-size: 1.1em;
+            }
+
+            .letter {
+                font-size: 1em; /* Fonte da cartinha reduzida */
+            }
         }
 
     </style>
