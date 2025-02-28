@@ -3,67 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para nós dois</title>
+    <title>Nosso Amor ❤️</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: #0a1128;
-            color: white;
+            background: #007bff; /* Alterado para azul */
+            color: #fff; /* Cor do texto geral alterada para branco */
             margin: 0;
             padding: 20px;
             animation: fadeIn 1.5s forwards;
-        }
-
-        h1, h2 {
-    color: red;
-}
-
-        .love-message {
-    color: red;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px auto;
-            justify-content: center;
-            max-width: 800px;
-        }
-
-        .gallery img {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border: 5px solid red;
-}
-
-        .letter-container {
-    background: linear-gradient(to right, #0a1128, #1a1a40);
-    border-radius: 15px;
-    padding: 20px;
-    width: 80%;
-    margin: 40px auto;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-    animation: slideIn 2s ease-out forwards;
-}
-
-        .letter {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: white;
-            text-align: left;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0;
-            white-space: pre-wrap;
         }
 
         @keyframes fadeIn {
@@ -71,33 +20,193 @@
             to { opacity: 1; }
         }
 
+        h1 {
+            font-size: 3em;
+            color: #ff6b81; /* Cor vermelha para o título */
+            animation: slideIn 1.5s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
         @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 10px solid #ff6b81;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .love-message {
+            margin-top: 40px;
+            font-size: 1.5em;
+            color: #ff6b81; /* Cor vermelha para a mensagem */
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .letter-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            margin: 40px auto;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            animation: slideIn 2s ease-out forwards;
+        }
+
+        .letter {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #fff; /* Cor da letra da cartinha alterada para branco */
+            text-align: left;
+            background: #333; /* Fundo da cartinha alterado para cinza escuro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .letter-container h2 {
+            font-size: 2em;
+            color: #ff6b81; /* Cor vermelha para o título da cartinha */
+            margin-bottom: 20px;
+        }
+
+        .audio-container {
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                justify-content: center;
+            }
+
+            .gallery img {
+                max-width: 200px;
+            }
+
+            .love-message {
+                font-size: 1.2em;
+            }
+
+            .letter-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .letter {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                justify-content: center;
+            }
+
+            .gallery img {
+                max-width: 180px;
+            }
+
+            .love-message {
+                font-size: 1.1em;
+            }
+
+            .letter {
+                font-size: 1em;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <h1>Nosso Amor</h1>
-    <div class="love-message">Te amo mais do que palavras podem dizer!</div>
+
+    <h1>Nosso Amor ❤️</h1>
+    <p>Um pequeno espaço para guardar nossos momentos especiais.</p>
 
     <div class="gallery">
-        <img src="teste.jpeg" alt="Foto 1">
-        <img src="teste.jpeg" alt="Foto 2">
-        <img src="teste.jpeg" alt="Foto 3">
-        <img src="teste.jpeg" alt="Foto 4">
-        <img src="teste.jpeg" alt="Foto 5">
-        <img src="teste.jpeg" alt="Foto 6">
+        <img src="teste.jpeg" alt="Nosso momento 1">
+        <img src="teste.jpeg" alt="Nosso momento 2">
+        <img src="teste.jpeg" alt="Nosso momento 3">
+        <img src="teste.jpeg" alt="Nosso momento 4">
+        <img src="teste.jpeg" alt="Nosso momento 5">
+        <img src="teste.jpeg" alt="Nosso momento 6">
+    </div>
+
+    <div class="love-message">
+        Te amo mais do que palavras podem dizer! 💕
     </div>
 
     <div class="letter-container">
-        <p class="letter">
-            Minha querida,
-            
-            Quero que saiba o quanto você é especial para mim. Cada momento ao seu lado é um presente, e meu amor por você cresce a cada dia. 
-            
-            Te amo com todo meu coração! ❤️
-        </p>
+        <h2>Minha Cartinha para Você 💌</h2>
+        <div class="letter">
+            Querida [Nome dela],
+
+            Desde o momento em que nos encontramos, meu coração nunca mais foi o mesmo. Cada sorriso seu, cada palavra que você diz, cada pequeno gesto, tudo em você faz meu mundo mais bonito. Eu sinto que a cada dia que passamos juntos, nos tornamos mais fortes, mais próximos e mais apaixonados.
+
+            Quando penso em tudo o que já vivemos, me sinto grato por cada segundo ao seu lado. Você é a razão do meu sorriso, e tudo o que quero é fazer você feliz. Te amo com toda a minha alma, mais do que as palavras podem expressar. 
+
+            Com todo o meu amor,  
+            [Seu nome]
+        </div>
     </div>
+
+    <div class="audio-container">
+        <audio id="background-music" loop>
+            <source src="musica.mp3" type="audio/mp3">
+            Seu navegador não suporta áudio.
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("background-music");
+            audio.volume = 0.3;
+
+            document.body.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                }
+            });
+
+            audio.play().catch(() => {
+                console.log("O navegador bloqueou o autoplay. O áudio será iniciado com um clique.");
+            });
+        });
+    </script>
+
 </body>
 </html>
