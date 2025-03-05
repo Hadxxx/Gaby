@@ -51,14 +51,6 @@
             object-fit: contain; /* Ajusta as imagens sem cortar */
         }
 
-        .gallery img.horizontal {
-            border-radius: 15px; /* Arredonda também as horizontais */
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
         .carousel-container {
             position: relative;
             width: 100%;
@@ -77,10 +69,6 @@
             height: auto;
             border-radius: 15px; /* Arredonda os cantos das imagens */
             object-fit: contain; /* Ajusta as imagens sem cortar */
-        }
-
-        .carousel img.horizontal {
-            border-radius: 15px; /* Arredonda também as horizontais */
         }
 
         .prev, .next {
@@ -137,13 +125,13 @@
 
     <div class="carousel-container">
         <div class="carousel">
-            <img class="horizontal" src="foto1.jpeg" alt="Nosso momento 1">
+            <img src="foto1.jpeg" alt="Nosso momento 1">
             <img src="foto2.jpeg" alt="Nosso momento 2">
-            <img class="horizontal" src="foto3.jpeg" alt="Nosso momento 3">
+            <img src="foto3.jpeg" alt="Nosso momento 3">
             <img src="foto4.jpeg" alt="Nosso momento 4">
-            <img class="horizontal" src="foto5.jpeg" alt="Nosso momento 5">
+            <img src="foto5.jpeg" alt="Nosso momento 5">
             <img src="foto6.jpeg" alt="Nosso momento 6">
-            <img class="horizontal" src="foto7.jpeg" alt="Nosso momento 7">
+            <img src="foto7.jpeg" alt="Nosso momento 7">
             <img src="foto8.jpeg" alt="Nosso momento 8">
         </div>
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
