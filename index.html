@@ -5,20 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Amor ❤️</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+            background: #1c1c1c; /* Cor menos chamativa aplicada */
             color: #fff;
+            margin: 0;
             padding: 20px;
             animation: fadeIn 1.5s forwards;
+            scroll-behavior: smooth;
         }
 
         @keyframes fadeIn {
@@ -28,8 +23,8 @@
 
         h1 {
             font-size: 3em;
-            color: #FFD700;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            color: #FF4C4C;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
             animation: slideIn 1.5s ease-out;
         }
 
@@ -38,83 +33,86 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .carousel {
-            position: relative;
+        .gallery {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
             max-width: 600px;
             margin: 20px auto;
-            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery img {
+            width: 100%;
             border-radius: 15px;
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel img {
             width: 100%;
-            display: none;
             border-radius: 15px;
         }
 
-        .carousel img.active {
-            display: block;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .carousel-buttons {
+        .prev, .next {
             position: absolute;
             top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
             transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
         }
 
-        .carousel-buttons button {
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1.5em;
-            border-radius: 5px;
-        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
 
         .love-message {
-            margin-top: 40px;
-            font-size: 1.8em;
+            font-size: 1.5em;
+            color: #FF4C4C;
             font-weight: bold;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-top: 40px;
         }
 
         .letter-container {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid #FF4C4C;
             border-radius: 15px;
+            padding: 20px;
             width: 80%;
             margin: 40px auto;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .letter {
+            font-family: 'Courier New', Courier, monospace;
             font-size: 1.2em;
-            line-height: 1.6;
             color: #fff;
             text-align: left;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5em; }
-            .carousel { max-width: 90%; }
-            .love-message { font-size: 1.5em; }
+            .gallery img { max-width: 90%; }
             .letter-container { width: 90%; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 2em; }
-            .love-message { font-size: 1.2em; }
-            .letter { font-size: 1em; }
         }
     </style>
 </head>
@@ -123,29 +121,25 @@
     <h1>Nosso Amor ❤️</h1>
     <p>Um pequeno espaço para guardar nossos momentos especiais.</p>
 
-    <div class="carousel">
-        <img src="teste1.jpeg" class="active" alt="Nosso momento 1">
-        <img src="teste2.jpeg" alt="Nosso momento 2">
-        <img src="teste3.jpeg" alt="Nosso momento 3">
-        <img src="teste4.jpeg" alt="Nosso momento 4">
-        <img src="teste5.jpeg" alt="Nosso momento 5">
-        <div class="carousel-buttons">
-            <button onclick="prevImage()">❮</button>
-            <button onclick="nextImage()">❯</button>
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="teste1.jpeg" alt="Nosso momento 1">
+            <img src="teste2.jpeg" alt="Nosso momento 2">
+            <img src="teste3.jpeg" alt="Nosso momento 3">
         </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 
-    <div class="love-message">
-        Te amo mais do que consigo imaginar! 💕
-    </div>
+    <div class="love-message">Te amo mais do que consigo imaginar! 💕</div>
 
     <div class="letter-container">
         <h2>Minha Cartinha para Você 💌</h2>
         <div class="letter">
             Querida [Nome dela],
-            
+
             Desde o momento em que nos encontramos, meu coração nunca mais foi o mesmo. Cada sorriso seu, cada palavra que você diz, tudo em você faz meu mundo mais bonito.
-            
+
             Com todo o meu amor,  
             [Seu nome]
         </div>
@@ -153,24 +147,13 @@
 
     <script>
         let index = 0;
-        const images = document.querySelectorAll(".carousel img");
-
-        function showImage(i) {
-            images.forEach(img => img.classList.remove("active"));
-            images[i].classList.add("active");
+        function moveSlide(step) {
+            const slides = document.querySelector('.carousel');
+            const totalSlides = slides.children.length;
+            index = (index + step + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(${-index * 100}%)`;
         }
-
-        function nextImage() {
-            index = (index + 1) % images.length;
-            showImage(index);
-        }
-
-        function prevImage() {
-            index = (index - 1 + images.length) % images.length;
-            showImage(index);
-        }
-
-        setInterval(nextImage, 5000);
     </script>
+
 </body>
 </html>
