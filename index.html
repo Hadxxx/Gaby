@@ -46,14 +46,8 @@
             width: 100%;
             height: auto;
             border-radius: 15px; /* Arredonda as imagens */
-        }
-
-        .gallery img.horizontal, .carousel img.horizontal {
-            object-fit: contain; /* Não corta as imagens horizontais */
-        }
-
-        .gallery img:not(.horizontal), .carousel img:not(.horizontal) {
-            object-fit: cover; /* Corta imagens verticais, mas preenche o espaço */
+            object-fit: contain; /* Ajusta a imagem sem cortar */
+            flex-shrink: 0; /* Impede que as imagens encolham */
         }
 
         .carousel {
