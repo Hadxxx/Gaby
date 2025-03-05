@@ -138,12 +138,19 @@
 
     <script>
         let index = 0;
+
+        // Função para mover a imagem
         function moveSlide(step) {
             const slides = document.querySelector('.carousel');
             const totalSlides = slides.children.length;
             index = (index + step + totalSlides) % totalSlides;
             slides.style.transform = `translateX(${-index * 100}%)`;
         }
+
+        // Move as imagens automaticamente a cada 3 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000); // 3000ms = 3 segundos
     </script>
 
 </body>
