@@ -46,8 +46,14 @@
             width: 100%;
             height: auto;
             border-radius: 15px; /* Arredonda as imagens */
-            object-fit: cover; /* Faz a imagem se ajustar sem distorção */
-            margin: 5px; /* Adiciona um pequeno espaço entre as imagens */
+        }
+
+        .gallery img.horizontal, .carousel img.horizontal {
+            object-fit: contain; /* Não corta as imagens horizontais */
+        }
+
+        .gallery img:not(.horizontal), .carousel img:not(.horizontal) {
+            object-fit: cover; /* Corta imagens verticais, mas preenche o espaço */
         }
 
         .carousel {
@@ -64,7 +70,6 @@
             border: none;
             padding: 10px;
             cursor: pointer;
-            border-radius: 50%; /* Arredonda os botões de navegação */
         }
 
         .prev { left: 10px; }
