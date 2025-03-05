@@ -33,42 +33,27 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        .gallery {
+        .gallery, .carousel-container {
             display: flex;
             overflow: hidden;
             width: 100%;
             max-width: 600px;
             margin: 20px auto;
             position: relative;
+            border-radius: 15px; /* Arredonda o contêiner da galeria e do carrossel */
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Adiciona sombra ao redor */
         }
 
-        .gallery img {
+        .gallery img, .carousel img {
             width: 100%;
             height: auto;
-            border-radius: 15px; /* Arredonda os cantos das imagens */
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border-radius: 15px; /* Arredonda as imagens */
             object-fit: contain; /* Ajusta as imagens sem cortar */
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-            overflow: hidden;
         }
 
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px; /* Arredonda os cantos das imagens */
-            object-fit: contain; /* Ajusta as imagens sem cortar */
         }
 
         .prev, .next {
