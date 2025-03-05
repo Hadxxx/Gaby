@@ -14,8 +14,7 @@
             padding: 20px;
             animation: fadeIn 1.5s forwards;
             scroll-behavior: smooth;
-}
-
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -45,10 +44,11 @@
 
         .gallery img {
             width: 100%;
+            height: auto;
             border-radius: 15px;
             box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
             transition: transform 0.5s ease, box-shadow 0.5s ease;
-            object-fit: contain;
+            object-fit: contain; /* Ajusta a imagem sem distorcer */
         }
 
         .gallery img:hover {
@@ -70,7 +70,9 @@
 
         .carousel img {
             width: 100%;
+            height: auto;
             border-radius: 15px;
+            object-fit: contain; /* Ajusta as imagens sem distorção */
         }
 
         .prev, .next {
@@ -104,8 +106,7 @@
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
             height: auto; /* Garante que a altura seja ajustada automaticamente */
             max-height: none; /* Remove qualquer restrição de altura máxima */
-}
-
+        }
 
         .letter {
             font-family: 'Courier New', Courier, monospace;
