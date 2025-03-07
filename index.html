@@ -1,3 +1,5 @@
+antigo:
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -86,32 +88,20 @@
             background-color: rgba(255, 255, 255, 0.1);
             border: 2px solid #FF0670;
             border-radius: 15px;
-            padding: 30px;
+            padding: 20px;
             width: 80%;
             margin: 40px auto;
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
+            height: auto;
+            max-height: none;
         }
 
         .letter {
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.2em;
             color: #fff;
-            white-space: pre-wrap;
             text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .controls {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .controls select, .controls input, .controls button {
-            margin: 5px;
-            padding: 5px;
+            white-space: pre-wrap; /* Mantém os parágrafos com espaçamento */
         }
 
         @media (max-width: 768px) {
@@ -122,9 +112,11 @@
     </style>
 </head>
 <body>
+
     <h1>Meu amor! ❤️</h1>
     <p>Uma pequena surpresinha de 6 meses pra você!!</p>
 
+    <!-- Carrossel de imagens -->
     <div class="carousel-container">
         <div class="carousel">
             <img src="foto1.jpeg" alt="Nosso momento 1">
@@ -145,51 +137,87 @@
 
     <div class="love-message"><strong>Você é a escolha que eu faço todos os dias!</strong></div>
 
-    <div class="controls">
-        <label>Fonte:</label>
-        <select id="fontSelect" onchange="updateLetterStyle()">
-            <option value="Arial">Arial</option>
-            <option value="Courier New">Courier New</option>
-            <option value="Times New Roman">Times New Roman</option>
-        </select>
-        <label>Tamanho:</label>
-        <input type="number" id="fontSize" value="18" onchange="updateLetterStyle()">
-        <label>Negrito:</label>
-        <input type="checkbox" id="bold" onchange="updateLetterStyle()">
-    </div>
-
     <div class="letter-container">
-        <h2>Minha Cartinha para Você 💌</h2>
-        <textarea id="letter" class="letter" rows="10" cols="50">Querida Gaby, a princesa mais linda do universo,
+    <h2>Minha Cartinha para Você 💌</h2>
+    <div class="letter">
+        Querida Gaby, a princesa mais linda do universo,
 
-Às vezes, sou péssimo para expressar o que sinto, mas quero que saiba que, mesmo nos momentos em que estou mais fechado, você faz uma diferença enorme na minha vida...
+        Às vezes, sou péssimo para expressar o que sinto, mas quero que saiba que, mesmo nos momentos em que estou mais fechado, você faz uma diferença enorme na minha vida. Lembro de hoje, por exemplo, quando você fez questão de me ver, mesmo que por pouco tempo. Eu estava tão rabugento, mas o seu sorriso, aquele sorriso que ilumina tudo ao redor, fez o meu dia. O abraço que você me deu foi tudo o que eu precisava, e nem sabia disso até sentir você ao meu lado.
 
-Com o meu pequeno amor,
-Luiz Gustavo</textarea>
-        <button onclick="saveLetter()">Salvar</button>
+        Você tem esse dom de, sem saber, fazer tudo ficar melhor. De me dar um carinho simples e, ao mesmo tempo, profundo. A sua presença é como uma calma no meio de um dia turbulento, e eu sou tão grato por ter você ao meu lado. Você me faz querer ser uma versão melhor de mim, me ajuda a perceber o que realmente importa. Esses seis meses não são nada comparados ao que quero viver ao seu lado, mas já são preciosos. Cada risada, cada conversa, até os momentos difíceis que passamos juntos. Tudo isso faz parte do que somos e do que vamos ser. Não vejo a hora de escrever mais histórias com você, de continuar sendo seu apoio e seu companheiro.
+
+        Você é a razão do meu universo, a estrela que brilha mais forte do que qualquer outra. Quando olho para você, vejo que você merece o mundo e muito mais. Seu amor me faz querer ser uma pessoa melhor, assim como o sol aquece a Terra e a lua ilumina a noite. Seu sorriso é meu amanhecer, e seus abraços são o refúgio que eu preciso. Eu te amo mais do que qualquer palavra pode expressar, e o nosso amor cresce como uma galáxia, cada vez mais forte e eterno. No futuro, eu quero que você mostre essas cartinhas para nossos filhos, para eles te admirarem igual eu admiro você agora e vou admirar você daqui a 1000 anos, aos meus olhos você é uma obra de arte. Você é meu mundo, e eu estarei sempre ao seu lado, para te apoiar e te dar tudo o que você merece.
+
+        Eu te amo de uma forma que vai além de qualquer medida ou comparação. Te amo como se o universo inteiro estivesse concentrado em um único segundo, como se cada estrela fosse uma parte de nós, brilhando em sintonia. Te amo como a Terra ama o sol, de forma essencial e eterna, como o mar abraça a lua em suas marés, sempre se movendo em um ciclo infinito. É um amor que não cabe em palavras, porque é tão vasto quanto a própria galáxia, tão forte quanto a gravidade que mantém os planetas no seu lugar. Te amo com a intensidade de uma explosão de estrelas, de algo tão poderoso que muda tudo ao redor. O que sinto por você é tão imenso que poderia derreter montanhas e criar oceanos, tão profundo quanto o espaço mais distante, e tão único quanto um cometa que nunca mais volta. Isso é um centésimo do que sinto por você, esse sentimento que preenche meu coração.
+
+        Obrigado por ser você, por me fazer sentir tão especial e amado, e por simplesmente estar aqui comigo todos os dias. Você me ensinou a amar!
+
+        Com o meu pequeno amor,
+        Luiz Gustavo
     </div>
+</div>
+
+    <audio id="audio-player" autoplay>
+        <source src="oh-my-angel.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio.
+    </audio>
 
     <script>
-        function updateLetterStyle() {
-            const letter = document.getElementById("letter");
-            const font = document.getElementById("fontSelect").value;
-            const size = document.getElementById("fontSize").value + "px";
-            const bold = document.getElementById("bold").checked ? "bold" : "normal";
-            letter.style.fontFamily = font;
-            letter.style.fontSize = size;
-            letter.style.fontWeight = bold;
-        }
+        // Função para atualizar os contadores de tempo
+        function updateCounters() {
+            const today = new Date();
+            
+            const togetherStart = new Date("2024-09-06");
+            const crazyStart = new Date("2024-04-17");
 
-        function saveLetter() {
-            localStorage.setItem("savedLetter", document.getElementById("letter").value);
-        }
+            const togetherDiff = today - togetherStart;
+            const crazyDiff = today - crazyStart;
 
-        window.onload = function() {
-            const savedLetter = localStorage.getItem("savedLetter");
-            if (savedLetter) {
-                document.getElementById("letter").value = savedLetter;
+            // Função para calcular o tempo em diferentes unidades
+            function formatTime(diff) {
+                const seconds = Math.floor(diff / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+                const days = Math.floor(hours / 24);
+                const months = Math.floor(days / 30);
+
+                return {
+                    months: months,
+                    days: days % 30,
+                    hours: hours % 24,
+                    minutes: minutes % 60,
+                    seconds: seconds % 60
+                };
             }
-        };
+
+            const togetherTime = formatTime(togetherDiff);
+            const crazyTime = formatTime(crazyDiff);
+
+            // Atualizar os contadores
+            document.getElementById("together-counter").textContent = `${togetherTime.months} meses, ${togetherTime.days} dias, ${togetherTime.hours} horas, ${togetherTime.minutes} minutos, ${togetherTime.seconds} segundos`;
+            document.getElementById("crazy-counter").textContent = `${crazyTime.months} meses, ${crazyTime.days} dias, ${crazyTime.hours} horas, ${crazyTime.minutes} minutos, ${crazyTime.seconds} segundos`;
+        }
+
+        // Iniciar os contadores
+        updateCounters();
+        setInterval(updateCounters, 1000); // Atualizar a cada segundo
+
+        // Função para controlar o carrossel de imagens
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function moveSlide(step) {
+            currentSlide += step;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            document.querySelector('.carousel').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Aguardar 5 segundos antes de tocar a música
+        setTimeout(function() {
+            document.getElementById("audio-player").play();
+        }, 5000);
     </script>
+
 </body>
 </html>
