@@ -69,17 +69,16 @@
         .prev { left: 10px; }
         .next { right: 10px; }
 
-        .timer-container {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #FFD700;
-            margin-top: 40px;
-        }
-
         .love-message {
             font-size: 1.5em;
             color: #FF0670;
             font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .counter {
+            font-size: 1.2em;
+            color: #FFD700;
             margin-top: 10px;
         }
 
@@ -114,6 +113,9 @@
     <h1>Meu amor! ❤️</h1>
     <p>Uma pequena surpresinha de 6 meses pra você!!</p>
 
+    <div class="counter" id="together-counter"></div>
+    <div class="counter" id="crazy-counter"></div>
+
     <div class="carousel-container">
         <div class="carousel">
             <img src="foto1.jpeg" alt="Nosso momento 1">
@@ -128,8 +130,6 @@
         <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
-
-    <div class="timer-container" id="timer"></div>
 
     <div class="love-message">Você é a escolha que eu faço todos os dias!</div>
 
@@ -147,7 +147,6 @@
 
     <script>
         let index = 0;
-
         function moveSlide(step) {
             const slides = document.querySelector('.carousel');
             const totalSlides = slides.children.length;
@@ -155,27 +154,24 @@
             slides.style.transform = `translateX(${-index * 100}%)`;
         }
 
-        setInterval(() => {
-            moveSlide(1);
-        }, 3000);
+        setInterval(() => { moveSlide(1); }, 3000);
 
-        function updateTimer() {
-            const startDate = new Date('2024-09-06T00:00:00');
+        function updateCounter(id, startDate) {
             const now = new Date();
-            const diff = now - startDate;
-
-            const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
-            const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-            const minutes = Math.floor(diff / (1000 * 60)) % 60;
+            const start = new Date(startDate);
+            const diff = now - start;
             const seconds = Math.floor(diff / 1000) % 60;
-
-            document.getElementById('timer').innerHTML = 
-                `Estamos juntos há: ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos ❤️`;
+            const minutes = Math.floor(diff / 60000) % 60;
+            const hours = Math.floor(diff / 3600000) % 24;
+            const days = Math.floor(diff / 86400000) % 30;
+            const months = Math.floor(diff / (86400000 * 30));
+            document.getElementById(id).innerText = `${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
         }
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        setInterval(() => {
+            updateCounter('together-counter', '2024-09-06T00:00:00');
+            updateCounter('crazy-counter', '2024-04-18T00:00:00');
+        }, 1000);
     </script>
 
 </body>
