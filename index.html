@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Amor ❤️</title>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -102,12 +101,6 @@
             text-align: left;
         }
 
-        .music-player {
-            margin: 20px auto;
-            width: 100%;
-            max-width: 500px;
-        }
-
         @media (max-width: 768px) {
             h1 { font-size: 2.5em; }
             .gallery img { max-width: 90%; }
@@ -120,14 +113,7 @@
     <h1>Meu amor! ❤️</h1>
     <p>Uma pequena surpresinha de 6 meses pra você!!</p>
 
-    <!-- Player de música com layout estilo Spotify -->
-    <div class="music-player">
-        <audio id="audio-player" controls>
-            <source src="oh-my-angel.mp3" type="audio/mp3">
-            Seu navegador não suporta áudio.
-        </audio>
-    </div>
-
+    <!-- Carrossel de imagens -->
     <div class="carousel-container">
         <div class="carousel">
             <img src="foto1.jpeg" alt="Nosso momento 1">
@@ -160,7 +146,11 @@
         </div>
     </div>
 
-    <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
+    <audio id="audio-player" autoplay>
+        <source src="oh-my-angel.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio.
+    </audio>
+
     <script>
         // Função para atualizar os contadores de tempo
         function updateCounters() {
@@ -212,11 +202,10 @@
             document.querySelector('.carousel').style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Inicializar o Plyr
-        const player = new Plyr('#audio-player');
-        
-        // Configurar volume para 15%
-        player.volume = 0.15;
+        // Aguardar 5 segundos antes de tocar a música
+        setTimeout(function() {
+            document.getElementById("audio-player").play();
+        }, 5000);
     </script>
 
 </body>
