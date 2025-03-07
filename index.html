@@ -33,6 +33,55 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
+        .gallery, .carousel-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .gallery img, .carousel img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        .love-message {
+            font-size: 1.5em;
+            color: #FF0670;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .counter {
+            font-size: 1.2em;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+
         .letter-container {
             background-color: rgba(255, 255, 255, 0.1);
             border: 2px solid #FF0670;
@@ -55,28 +104,20 @@
             line-height: 1.6;
         }
 
-        .settings-panel {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            width: 80%;
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            color: white;
+        .controls {
+            margin-top: 20px;
+            text-align: center;
         }
 
-        .settings-panel label {
-            font-size: 1em;
-        }
-
-        .settings-panel select,
-        .settings-panel input {
+        .controls select, .controls input, .controls button {
+            margin: 5px;
             padding: 5px;
-            border-radius: 5px;
-            border: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .gallery img { max-width: 90%; }
+            .letter-container { width: 90%; }
         }
     </style>
 </head>
@@ -84,70 +125,71 @@
     <h1>Meu amor! ❤️</h1>
     <p>Uma pequena surpresinha de 6 meses pra você!!</p>
 
-    <div class="settings-panel">
-        <label for="fontSelect">Fonte:</label>
-        <select id="fontSelect">
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="foto1.jpeg" alt="Nosso momento 1">
+            <img src="foto2.jpeg" alt="Nosso momento 2">
+            <img src="foto3.jpeg" alt="Nosso momento 3">
+            <img src="foto4.jpeg" alt="Nosso momento 4">
+            <img src="foto5.jpeg" alt="Nosso momento 5">
+            <img src="foto6.jpeg" alt="Nosso momento 6">
+            <img src="foto7.jpeg" alt="Nosso momento 7">
+            <img src="foto8.jpeg" alt="Nosso momento 8">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="counter"><strong>Estamos juntos há:</strong> <span id="together-counter"></span></div>
+    <div class="counter"><strong>E estou bobo por você há:</strong> <span id="crazy-counter"></span></div>
+
+    <div class="love-message"><strong>Você é a escolha que eu faço todos os dias!</strong></div>
+
+    <div class="controls">
+        <label>Fonte:</label>
+        <select id="fontSelect" onchange="updateLetterStyle()">
             <option value="Arial">Arial</option>
             <option value="Courier New">Courier New</option>
             <option value="Times New Roman">Times New Roman</option>
-            <option value="Verdana">Verdana</option>
         </select>
-
-        <label for="fontSize">Tamanho:</label>
-        <input type="number" id="fontSize" min="10" max="50" value="18">
-
-        <label>
-            <input type="checkbox" id="boldToggle"> Negrito
-        </label>
-
-        <label>
-            <input type="checkbox" id="italicToggle"> Itálico
-        </label>
-
-        <label for="colorPicker">Cor do Texto:</label>
-        <input type="color" id="colorPicker">
+        <label>Tamanho:</label>
+        <input type="number" id="fontSize" value="18" onchange="updateLetterStyle()">
+        <label>Negrito:</label>
+        <input type="checkbox" id="bold" onchange="updateLetterStyle()">
     </div>
 
     <div class="letter-container">
         <h2>Minha Cartinha para Você 💌</h2>
-        <div class="letter">Querida Gaby, a princesa mais linda do universo,
+        <textarea id="letter" class="letter" rows="10" cols="50">Querida Gaby, a princesa mais linda do universo,
 
 Às vezes, sou péssimo para expressar o que sinto, mas quero que saiba que, mesmo nos momentos em que estou mais fechado, você faz uma diferença enorme na minha vida...
 
-Eu te amo de uma forma que vai além de qualquer medida ou comparação. Te amo como se o universo inteiro estivesse concentrado em um único segundo...
-
 Com o meu pequeno amor,
-Luiz Gustavo</div>
+Luiz Gustavo</textarea>
+        <button onclick="saveLetter()">Salvar</button>
     </div>
 
-    <audio id="audio-player" autoplay>
-        <source src="oh-my-angel.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const letter = document.querySelector(".letter");
-            const fontSelect = document.getElementById("fontSelect");
-            const fontSize = document.getElementById("fontSize");
-            const boldToggle = document.getElementById("boldToggle");
-            const italicToggle = document.getElementById("italicToggle");
-            const colorPicker = document.getElementById("colorPicker");
+        function updateLetterStyle() {
+            const letter = document.getElementById("letter");
+            const font = document.getElementById("fontSelect").value;
+            const size = document.getElementById("fontSize").value + "px";
+            const bold = document.getElementById("bold").checked ? "bold" : "normal";
+            letter.style.fontFamily = font;
+            letter.style.fontSize = size;
+            letter.style.fontWeight = bold;
+        }
 
-            function updateStyle() {
-                letter.style.fontFamily = fontSelect.value;
-                letter.style.fontSize = fontSize.value + "px";
-                letter.style.fontWeight = boldToggle.checked ? "bold" : "normal";
-                letter.style.fontStyle = italicToggle.checked ? "italic" : "normal";
-                letter.style.color = colorPicker.value;
+        function saveLetter() {
+            localStorage.setItem("savedLetter", document.getElementById("letter").value);
+        }
+
+        window.onload = function() {
+            const savedLetter = localStorage.getItem("savedLetter");
+            if (savedLetter) {
+                document.getElementById("letter").value = savedLetter;
             }
-
-            fontSelect.addEventListener("change", updateStyle);
-            fontSize.addEventListener("input", updateStyle);
-            boldToggle.addEventListener("change", updateStyle);
-            italicToggle.addEventListener("change", updateStyle);
-            colorPicker.addEventListener("input", updateStyle);
-        });
+        };
     </script>
 </body>
 </html>
