@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Amor ❤️</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -102,28 +103,9 @@
         }
 
         .music-player {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #181818;
-            padding: 10px;
-            border-radius: 50px;
-            width: 90%;
-            max-width: 500px;
             margin: 20px auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .music-player img {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            margin-right: 10px;
-        }
-
-        .music-player audio {
             width: 100%;
-            outline: none;
+            max-width: 500px;
         }
 
         @media (max-width: 768px) {
@@ -140,8 +122,7 @@
 
     <!-- Player de música com layout estilo Spotify -->
     <div class="music-player">
-        <img src="album-cover.jpg" alt="Capa do Álbum">
-        <audio controls id="audio-player" autoplay>
+        <audio id="audio-player" controls>
             <source src="oh-my-angel.mp3" type="audio/mp3">
             Seu navegador não suporta áudio.
         </audio>
@@ -179,6 +160,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
     <script>
         // Função para atualizar os contadores de tempo
         function updateCounters() {
@@ -190,17 +172,34 @@
             const togetherDiff = today - togetherStart;
             const crazyDiff = today - crazyStart;
 
-            // Função para calcular o tempo em dias
-            const days = (timeDiff) => Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            // Função para calcular o tempo em diferentes unidades
+            function formatTime(diff) {
+                const seconds = Math.floor(diff / 1000);
+                const minutes = Math.floor(seconds / 60);
+                const hours = Math.floor(minutes / 60);
+                const days = Math.floor(hours / 24);
+                const months = Math.floor(days / 30);
+
+                return {
+                    months: months,
+                    days: days % 30,
+                    hours: hours % 24,
+                    minutes: minutes % 60,
+                    seconds: seconds % 60
+                };
+            }
+
+            const togetherTime = formatTime(togetherDiff);
+            const crazyTime = formatTime(crazyDiff);
 
             // Atualizar os contadores
-            document.getElementById("together-counter").textContent = days(togetherDiff) + " dias";
-            document.getElementById("crazy-counter").textContent = days(crazyDiff) + " dias";
+            document.getElementById("together-counter").textContent = `${togetherTime.months} meses, ${togetherTime.days} dias, ${togetherTime.hours} horas, ${togetherTime.minutes} minutos, ${togetherTime.seconds} segundos`;
+            document.getElementById("crazy-counter").textContent = `${crazyTime.months} meses, ${crazyTime.days} dias, ${crazyTime.hours} horas, ${crazyTime.minutes} minutos, ${crazyTime.seconds} segundos`;
         }
 
         // Iniciar os contadores
         updateCounters();
-        setInterval(updateCounters, 86400000); // Atualizar a cada 24 horas
+        setInterval(updateCounters, 1000); // Atualizar a cada segundo
 
         // Função para controlar o carrossel de imagens
         let currentSlide = 0;
@@ -213,8 +212,11 @@
             document.querySelector('.carousel').style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Definir o volume do áudio
-        document.getElementById("audio-player").volume = 0.15; // Volume de 15%
+        // Inicializar o Plyr
+        const player = new Plyr('#audio-player');
+        
+        // Configurar volume para 15%
+        player.volume = 0.15;
     </script>
 
 </body>
